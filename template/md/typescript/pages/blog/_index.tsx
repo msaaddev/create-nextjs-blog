@@ -15,17 +15,21 @@ const Blog: NextPage = () => {
 		<section>
 			{data.map((post: IPost, index: number) => {
 				return (
-					<article>
-						<span>
-							{post.category[0].charAt(0).toUpperCase() +
-								post.category[0].slice(1)}
-						</span>
-						<Link href={`/blog/${post.slug}`} key={index}>
+					<>
+						<article key={index}>
+							<Link href={`/blog/${post.slug}`}>
 							<h2>{post.title}</h2>
-						</Link>
-						<span>{formatDate(post.publishedDate)}</span>
-						<p>{post.description}</p>
-					</article>
+							</Link>
+							<p>
+								{`${post.category[0].charAt(0).toUpperCase() +
+									post.category[0].slice(1)} ${formatDate(
+									post.publishedDate
+									)} ${post.readingTime}`}
+							</p>
+									<p>{post.description}</p>
+						</article>
+						<hr />
+					</>
 				);
 			})}
 		</section>

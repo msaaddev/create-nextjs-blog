@@ -22,8 +22,6 @@ module.exports = (projectName = '') => {
 	destination = path.join(cwd, projectName, 'pages', 'blog');
 	copy(source, destination, (err, createdFiles) => {
 		if (err) throw err;
-
-		createdFiles.forEach(filePath => console.log(`Created ${filePath}`));
 	});
 
 	// copy post type
@@ -40,8 +38,6 @@ module.exports = (projectName = '') => {
 	destination = path.join(cwd, projectName, 'types');
 	copy(source, destination, (err, createdFiles) => {
 		if (err) throw err;
-
-		createdFiles.forEach(filePath => console.log(`Created ${filePath}`));
 	});
 
 	// copy utils
@@ -58,8 +54,6 @@ module.exports = (projectName = '') => {
 	destination = path.join(cwd, projectName, 'utils');
 	copy(source, destination, (err, createdFiles) => {
 		if (err) throw err;
-
-		createdFiles.forEach(filePath => console.log(`Created ${filePath}`));
 	});
 
 	// copy scripts
@@ -75,7 +69,5 @@ module.exports = (projectName = '') => {
 	destination = path.join(cwd, projectName, 'scripts');
 	copy(source, destination, (err, createdFiles) => {
 		if (err) throw err;
-
-		createdFiles.forEach(filePath => console.log(`Created ${filePath}`));
 	});
 };

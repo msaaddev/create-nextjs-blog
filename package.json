@@ -10,7 +10,7 @@
 	"author": {
 		"name": "Saad Irfan",
 		"email": "mrsaadirfan@gmail.com",
-		"url": "twitter.com/msaaddev"
+		"url": "https://twitter.com/msaaddev"
 	},
 	"keywords": [
 		"create-next-blog",
@@ -24,13 +24,19 @@
 		"format": "prettier --write \"./**/*.{js,json}\""
 	},
 	"dependencies": {
-		"chalk": "^4.1.2",
+		"chalk": "^2.4.2",
 		"cli-alerts": "^1.2.2",
 		"cli-handle-error": "^4.4.0",
 		"cli-handle-unhandled": "^1.1.1",
 		"cli-meow-help": "^3.1.0",
 		"cli-welcome": "^2.2.2",
-		"meow": "^9.0.0"
+		"copy-template-dir": "^1.4.0",
+		"enquirer": "^2.3.6",
+		"execa": "^5.1.1",
+		"log-symbols": "^5.1.0",
+		"meow": "^9.0.0",
+		"node-cli-handle-error": "^1.0.0",
+		"ora": "^6.1.2"
 	},
 	"devDependencies": {
 		"prettier": "^2.8.1"

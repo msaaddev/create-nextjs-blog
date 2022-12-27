@@ -15,8 +15,8 @@ const Blog: NextPage = () => {
 		<section>
 			{data.map((post: IPost, index: number) => {
 				return (
-					<>
-						<article key={index}>
+					<div key={index}>
+						<article>
 							<Link href={`/blog/${post.slug}`}>
 							<h2>{post.title}</h2>
 							</Link>
@@ -29,7 +29,7 @@ const Blog: NextPage = () => {
 									<p>{post.description}</p>
 						</article>
 						<hr />
-					</>
+					</div>
 				);
 			})}
 		</section>

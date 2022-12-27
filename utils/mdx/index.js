@@ -4,6 +4,11 @@ const handleError = require('node-cli-handle-error');
 const question = require('../question');
 const { start, succeed, fail } = require('../../functions/spinner');
 
+/**
+ * Create Next MDX blog
+ *
+ *
+ */
 module.exports = async () => {
 	const { projectName, projectLang } = await question();
 	const spinner = ora();

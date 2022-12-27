@@ -1,9 +1,18 @@
+// external packages
 const { command } = require('execa');
 const ora = require('ora');
 const handleError = require('node-cli-handle-error');
-const cwd = require('cwd');
+const copy = require('copy-template-dir');
+
+// built-in Node.js modules
+const cwd = process.cwd();
+const path = require('path');
+const fs = require('fs').promises;
+
+// local imports
 const question = require('../question');
 const { start, succeed, fail } = require('../../functions/spinner');
+const generateTypeScriptNextBlog = require('./typescript');
 
 /**
  * Create Next MDX blog
@@ -13,8 +22,11 @@ const { start, succeed, fail } = require('../../functions/spinner');
 module.exports = async () => {
 	const { projectName, projectLang } = await question();
 	const spinner = ora();
+	let source, destination, variables;
+
 	console.log();
 	try {
+		// create Next.js blog
 		start(spinner, 'Creating Next project...');
 		if (projectLang === 'JavaScript') {
 			await command(`npx create-next-app ${projectName}`);
@@ -22,6 +34,53 @@ module.exports = async () => {
 			await command(`npx create-next-app ${projectName} --typescript`);
 		}
 		succeed(spinner, 'Next project created successfully');
+
+		// copy demo posts to Next.js app
+		start(spinner, 'Creating demo posts...');
+		source = path.join(__dirname, '..', '..', 'template', 'md', 'posts');
+		destination = path.join(cwd, projectName, 'posts');
+
+		copy(source, destination, (err, createdFiles) => {
+			if (err) throw err;
+		});
+		succeed(spinner, 'Demo posts created successfully');
+
+		// create blog page
+		start(spinner, 'Creating blog page...');
+		if (projectLang === 'JavaScript') {
+		} else {
+			await generateTypeScriptNextBlog(projectName);
+		}
+
+		succeed(spinner, 'Blog page created successfully');
+
+		// install dependencies
+		start(spinner, 'Installing dependencies...');
+		process.chdir(path.join(cwd, projectName));
+		await command('npm install reading-time gray-matter next-mdx-remote');
+		await command('npm dedupe');
+		succeed(spinner, 'Dependencies installed successfully');
+
+		// updating package.json
+		start(spinner, 'Updating package.json...');
+		const pkgJSONPath = path.join(cwd, projectName, 'package.json');
+		const packageJson = require(pkgJSONPath);
+		const script = {
+			dev: 'npm run generate-data && next dev',
+			'generate-data': 'node ./scripts/generate-blog-data.js',
+			build: 'npm run generate-data && next build'
+		};
+
+		packageJson.scripts = { ...packageJson.scripts, ...script };
+
+		await fs.writeFile(
+			pkgJSONPath,
+			JSON.stringify(packageJson, null, 2),
+			err => {
+				if (err) throw err;
+			}
+		);
+		succeed(spinner, 'package.json updated successfully');
 	} catch (err) {
 		console.log();
 		fail(spinner, err);

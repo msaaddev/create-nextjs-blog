@@ -19,7 +19,6 @@ const flags = cli.flags;
 const { clear, debug, withTailwind, typescript, javascript } = flags;
 
 (module.exports = async () => {
-	console.log(flags);
 	init({ clear });
 	input.includes(`help`) && cli.showHelp(0);
 

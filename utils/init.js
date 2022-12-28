@@ -5,7 +5,7 @@ const unhandled = require('cli-handle-unhandled');
 module.exports = ({ clear = true }) => {
 	unhandled();
 	welcome({
-		title: `create-next-blog`,
+		title: `setup-next-blog`,
 		tagLine: `by Saad Irfan`,
 		description: pkg.description,
 		version: pkg.version,

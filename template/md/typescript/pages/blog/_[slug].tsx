@@ -1,6 +1,7 @@
 // packages
 import type { NextPage } from 'next';
 import { GetStaticProps, GetStaticPaths } from 'next';
+import Head from 'next/head';
 import fs from 'fs';
 import matter from 'gray-matter';
 import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote';
@@ -20,15 +21,22 @@ interface IProps {
 
 const BlogPost: NextPage<IProps> = ({ mdxSource, frontMatter }) => {
 	return (
-		<div>
-			<h1>{frontMatter.title}</h1>
-			<p>
-				{`${frontMatter.category} ${formatDate(
-					frontMatter.publishedDate
-				)} ${frontMatter.readingTime}`}
-			</p>
-			<MDXRemote {...mdxSource} />
-		</div>
+		<>
+			<Head>
+				<title>{frontMatter.title}</title>
+				<meta name="description" content={frontMatter.description} />
+				<meta name="keywords" content={frontMatter.tag.join(', ')} />
+			</Head>
+			<div>
+				<h1>{frontMatter.title}</h1>
+				<p>
+					{`${frontMatter.category} ${formatDate(
+						frontMatter.publishedDate
+					)} ${frontMatter.readingTime}`}
+				</p>
+				<MDXRemote {...mdxSource} />
+			</div>
+		</>
 	);
 };
 

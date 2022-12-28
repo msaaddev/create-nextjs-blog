@@ -24,7 +24,7 @@ module.exports = async answers => {
 	console.log(chalk.cyan(`npm run dev`));
 
 	await exit({
-		github: `https://github.com/msaaddev/create-next-blog`,
+		github: `https://github.com/msaaddev/create-nextjs-blog`,
 		twitter: `https://twitter.com/msaaddev`,
 		pkgJSON
 	});

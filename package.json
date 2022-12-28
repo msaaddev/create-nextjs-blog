@@ -1,5 +1,5 @@
 {
-	"name": "setup-next-blog",
+	"name": "create-nextjs-blog",
 	"description": "Instantly set up Next.js MDX blog with TS or JS",
 	"version": "0.0.1",
 	"license": "MIT",

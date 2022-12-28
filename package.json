@@ -1,8 +1,9 @@
 {
 	"name": "create-nextjs-blog",
 	"description": "Instantly set up Next.js MDX blog with TS or JS",
-	"version": "0.0.2",
+	"version": "0.0.3",
 	"license": "MIT",
+	"repository": "https://github.com/msaaddev/new-tailwind-app",
 	"bin": {
 		"create-next-blog": "index.js",
 		"cnb": "index.js"
@@ -13,8 +14,19 @@
 		"url": "https://twitter.com/msaaddev"
 	},
 	"keywords": [
-		"create-next-blog",
-		"Saad Irfan"
+		"create-nextjs-blog",
+		"Saad Irfan",
+		"cnb",
+		"nextjs blog typescript",
+		"nextjs blog javascript",
+		"nextjs blog markdown",
+		"markdown nextjs blog",
+		"nextjs blog",
+		"nextjs markdown",
+		"markdown blog",
+		"next blog tailwind",
+		"nextjs blog typescript tailwind",
+		"nextjs tailwind blog"
 	],
 	"files": [
 		"index.js",

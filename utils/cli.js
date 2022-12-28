@@ -23,6 +23,24 @@ const flags = {
 		type: `boolean`,
 		alias: `v`,
 		desc: `Print CLI version`
+	},
+	withTailwind: {
+		type: `boolean`,
+		default: false,
+		alias: `wt`,
+		desc: `Integrate Tailwind CSS into Next.js app`
+	},
+	typescript: {
+		type: `boolean`,
+		default: false,
+		alias: `ts`,
+		desc: `Create a TypeScript Next.js app`
+	},
+	javascript: {
+		type: `boolean`,
+		default: false,
+		alias: `js`,
+		desc: `Create a JavaScript Next.js app`
 	}
 };
 

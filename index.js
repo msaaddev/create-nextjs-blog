@@ -16,14 +16,15 @@ const setupMarkDownBlog = require('./utils/md');
 
 const input = cli.input;
 const flags = cli.flags;
-const { clear, debug } = flags;
+const { clear, debug, withTailwind, typescript, javascript } = flags;
 
 (module.exports = async () => {
+	console.log(flags);
 	init({ clear });
 	input.includes(`help`) && cli.showHelp(0);
 
 	// ask questions
-	const answers = await question();
+	const answers = await question({ withTailwind, typescript, javascript });
 
 	// generate next mdx blog
 	await setupMarkDownBlog(answers);

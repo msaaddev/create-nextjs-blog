@@ -16,7 +16,7 @@ const input = cli.input;
 const flags = cli.flags;
 const { clear, debug } = flags;
 
-(async () => {
+(module.exports = async () => {
 	init({ clear });
 	input.includes(`help`) && cli.showHelp(0);
 

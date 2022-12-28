@@ -13,6 +13,7 @@ const fs = require('fs').promises;
 const question = require('../question');
 const { start, succeed, fail } = require('../../functions/spinner');
 const generateTypeScriptNextBlog = require('./typescript');
+const generateJavaScriptNextBlog = require('./javascript');
 
 /**
  * Create Next MDX blog
@@ -60,6 +61,7 @@ module.exports = async () => {
 		start(spinner, 'Creating blog page...');
 
 		if (projectLang === 'JavaScript') {
+			generateJavaScriptNextBlog(projectName);
 		} else {
 			generateTypeScriptNextBlog(projectName);
 		}

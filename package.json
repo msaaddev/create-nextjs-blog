@@ -21,7 +21,8 @@
 		"utils"
 	],
 	"scripts": {
-		"format": "prettier --write \"./**/*.{js,json}\""
+		"format": "prettier --write \"./**/*.{js,json}\"",
+		"test": "node test.js"
 	},
 	"dependencies": {
 		"chalk": "^2.4.2",

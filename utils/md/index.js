@@ -20,19 +20,28 @@ const generateTypeScriptNextBlog = require('./typescript');
  *
  */
 module.exports = async () => {
-	const { projectName, projectLang } = await question();
+	const { projectName, projectLang, integrateTailwind } = await question();
 	const spinner = ora();
 	let source, destination, variables;
 
 	console.log();
 	try {
-		// create Next.js blog
+		// create Next.js application
 		start(spinner, 'Creating Next project...');
+
 		if (projectLang === 'JavaScript') {
+			// create javascript Next.js app
 			await command(`npx create-next-app ${projectName}`);
+		} else if (projectLang === 'TypeScript' && integrateTailwind) {
+			// create typescript Next.js app with Tailwind CSS
+			await command(
+				`npx create-next-app -e with-tailwindcss ${projectName}`
+			);
 		} else {
+			// create typescript Next.js app
 			await command(`npx create-next-app ${projectName} --typescript`);
 		}
+
 		succeed(spinner, 'Next project created successfully');
 
 		// copy demo posts to Next.js app
@@ -57,7 +66,9 @@ module.exports = async () => {
 		// install dependencies
 		start(spinner, 'Installing dependencies...');
 		process.chdir(path.join(cwd, projectName));
-		await command('npm install reading-time gray-matter next-mdx-remote');
+		await command(
+			'npm install reading-time@1.5.0 gray-matter@4.0.3 next-mdx-remote@4.2.0'
+		);
 		await command('npm dedupe');
 		succeed(spinner, 'Dependencies installed successfully');
 

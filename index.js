@@ -9,6 +9,7 @@
 
 const init = require('./utils/init');
 const cli = require('./utils/cli');
+const exit = require('./utils/exit');
 const log = require('./utils/log');
 const setupMarkDownBlog = require('./utils/md');
 
@@ -24,4 +25,5 @@ const { clear, debug } = flags;
 	await setupMarkDownBlog();
 
 	debug && log(flags);
+	!debug && (await exit());
 })();

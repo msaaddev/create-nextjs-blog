@@ -2,7 +2,7 @@
 import Head from 'next/head';
 import fs from 'fs';
 import matter from 'gray-matter';
-import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote';
+import { MDXRemote } from 'next-mdx-remote';
 import { serialize } from 'next-mdx-remote/serialize';
 import formatDate from '../../utils/formatDate';
 

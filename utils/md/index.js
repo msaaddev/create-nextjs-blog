@@ -18,10 +18,12 @@ const generateJavaScriptNextBlog = require('./javascript');
 /**
  * Create Next MDX blog
  *
- *
+ * @param {object} answers - User answers
  */
-module.exports = async () => {
-	const { projectName, projectLang, integrateTailwind } = await question();
+module.exports = async answers => {
+	// extract answers
+	const { projectName, projectLang, integrateTailwind } = answers;
+
 	const spinner = ora();
 	let source, destination, variables;
 

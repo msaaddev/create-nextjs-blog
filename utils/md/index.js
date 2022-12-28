@@ -26,7 +26,7 @@ module.exports = async () => {
 
 	console.log();
 	try {
-		// create Next.js application
+		/* create Next.js application */
 		start(spinner, 'Creating Next project...');
 
 		if (projectLang === 'JavaScript') {
@@ -44,46 +44,55 @@ module.exports = async () => {
 
 		succeed(spinner, 'Next project created successfully');
 
-		// copy demo posts to Next.js app
+		/* copy demo posts to Next.js app */
 		start(spinner, 'Creating demo posts...');
+
 		source = path.join(__dirname, '..', '..', 'template', 'md', 'posts');
 		destination = path.join(cwd, projectName, 'posts');
 
 		copy(source, destination, (err, createdFiles) => {
 			if (err) throw err;
 		});
+
 		succeed(spinner, 'Demo posts created successfully');
 
-		// create blog page
+		/* create blog page */
 		start(spinner, 'Creating blog page...');
+
 		if (projectLang === 'JavaScript') {
 		} else {
-			await generateTypeScriptNextBlog(projectName);
+			generateTypeScriptNextBlog(projectName);
 		}
 
 		succeed(spinner, 'Blog page created successfully');
 
-		// install dependencies
+		/* install dependencies */
 		start(spinner, 'Installing dependencies...');
+
 		process.chdir(path.join(cwd, projectName));
 		await command(
 			'npm install reading-time@1.5.0 gray-matter@4.0.3 next-mdx-remote@4.2.0'
 		);
 		await command('npm dedupe');
+
 		succeed(spinner, 'Dependencies installed successfully');
 
-		// updating package.json
+		/* updating package.json */
 		start(spinner, 'Updating package.json...');
+
+		// read Next.js app package.json
 		const pkgJSONPath = path.join(cwd, projectName, 'package.json');
 		const packageJson = require(pkgJSONPath);
+
+		// update package.json scripts
 		const script = {
 			dev: 'npm run generate-data && next dev',
 			'generate-data': 'node ./scripts/generate-blog-data.js',
 			build: 'npm run generate-data && next build'
 		};
-
 		packageJson.scripts = { ...packageJson.scripts, ...script };
 
+		// write updated package.json
 		await fs.writeFile(
 			pkgJSONPath,
 			JSON.stringify(packageJson, null, 2),
@@ -91,6 +100,7 @@ module.exports = async () => {
 				if (err) throw err;
 			}
 		);
+
 		succeed(spinner, 'package.json updated successfully');
 	} catch (err) {
 		console.log();

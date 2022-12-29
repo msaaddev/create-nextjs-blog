@@ -4,6 +4,11 @@ import fs from 'fs';
 import matter from 'gray-matter';
 import { MDXRemote } from 'next-mdx-remote';
 import { serialize } from 'next-mdx-remote/serialize';
+
+// components
+import MarkdownComponents from '../../components/markdown';
+
+// utils
 import formatDate from '../../utils/formatDate';
 
 // data
@@ -24,7 +29,7 @@ const BlogPost = ({ mdxSource, frontMatter }) => {
 						frontMatter.publishedDate
 					)} ${frontMatter.readingTime}`}
 				</p>
-				<MDXRemote {...mdxSource} />
+				<MDXRemote {...mdxSource} components={MarkdownComponents()} />
 			</div>
 		</>
 	);

@@ -24,6 +24,22 @@ module.exports = (projectName = '') => {
 		if (err) throw err;
 	});
 
+	// copy components
+	source = path.join(
+		__dirname,
+		'..',
+		'..',
+		'..',
+		'template',
+		'md',
+		'javascript',
+		'components'
+	);
+	destination = path.join(cwd, projectName, 'components');
+	copy(source, destination, (err, createdFiles) => {
+		if (err) throw err;
+	});
+
 	// copy utils
 	source = path.join(
 		__dirname,

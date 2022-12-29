@@ -24,6 +24,22 @@ module.exports = (projectName = '') => {
 		if (err) throw err;
 	});
 
+	// copy components
+	source = path.join(
+		__dirname,
+		'..',
+		'..',
+		'..',
+		'template',
+		'md',
+		'typescript',
+		'components'
+	);
+	destination = path.join(cwd, projectName, 'components');
+	copy(source, destination, (err, createdFiles) => {
+		if (err) throw err;
+	});
+
 	// copy post type
 	source = path.join(
 		__dirname,

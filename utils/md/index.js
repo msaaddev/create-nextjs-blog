@@ -77,6 +77,10 @@ module.exports = async answers => {
 		await command(
 			'npm install reading-time@1.5.0 gray-matter@4.0.3 next-mdx-remote@4.2.0'
 		);
+		if (projectLang === 'TypeScript') {
+			await command('npm install --save-dev @types/node');
+		}
+
 		await command('npm dedupe');
 
 		succeed(spinner, 'Dependencies installed successfully');

@@ -30,7 +30,7 @@ module.exports = async answers => {
 	console.log();
 	try {
 		/* create Next.js application */
-		start(spinner, 'Creating Next project...');
+		start(spinner, 'Creating Next.js project...');
 
 		if (projectLang === 'JavaScript') {
 			// create javascript Next.js app
@@ -45,7 +45,7 @@ module.exports = async answers => {
 			await command(`npx create-next-app ${projectName} --typescript`);
 		}
 
-		succeed(spinner, 'Next project created successfully');
+		succeed(spinner, 'Next.js project created successfully');
 
 		/* copy demo posts to Next.js app */
 		start(spinner, 'Creating demo posts...');
@@ -110,6 +110,18 @@ module.exports = async answers => {
 		);
 
 		succeed(spinner, 'package.json updated successfully');
+
+		/* updating gitignore file */
+		start(spinner, 'Updating .gitignore file');
+		const gitIgnorePath = path.join(cwd, projectName, '.gitignore');
+		const gitIgnore = require(pkgJSONPath);
+
+		// append data to .gitignore
+		await fs.appendFile(gitIgnorePath, 'data', err => {
+			if (err) throw err;
+		});
+
+		succeed(spinner, '.gitignore updated successfully');
 	} catch (err) {
 		console.log();
 		fail(spinner, err);

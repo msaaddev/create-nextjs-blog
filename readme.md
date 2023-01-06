@@ -23,7 +23,7 @@
 - **Post**: Create a new blog post by creating a new markdown file in the `posts` directory
 - **Route**: Automatically create routes for your blog posts based on the markdown file name
 - **SEO**: Use your blog post frontmatter to add SEO tags to your blog post
-- **Markdown components**: Create Components in the `components/markdown` directory and use them in your blog
+- **Markdown components**: Use React components in your markdown blog posts
 - **MIT License**: Free to use for personal and commercial projects
 
 <br>

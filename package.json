@@ -1,7 +1,7 @@
 {
 	"name": "create-nextjs-blog",
 	"description": "Instantly set up Next.js blog with TS or JS",
-	"version": "0.0.6",
+	"version": "1.0.0",
 	"license": "MIT",
 	"repository": "https://github.com/msaaddev/new-tailwind-app",
 	"bin": {

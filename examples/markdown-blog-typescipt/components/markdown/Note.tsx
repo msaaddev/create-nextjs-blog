@@ -1,4 +1,6 @@
-const Note = ({children}: {children: React.ReactNode}) => {
+import React from "react";
+
+const Note = ({ children }: {children: React.ReactNode}) => {
 	return (
 		<p
 			style={{
@@ -9,9 +11,7 @@ const Note = ({children}: {children: React.ReactNode}) => {
 				margin: '0 20px'
 			}}
 		>
-			<em>
-				{children}
-			</em>
+			<em>{children}</em>
 		</p>
 	);
 };

@@ -1,5 +1,6 @@
 // packages
 import Head from 'next/head';
+import Link from 'next/link';
 import fs from 'fs';
 import matter from 'gray-matter';
 import { MDXRemote } from 'next-mdx-remote';
@@ -25,9 +26,12 @@ const BlogPost = ({ mdxSource, frontMatter }) => {
 			<div>
 				<h1>{frontMatter.title}</h1>
 				<p>
-					{`${frontMatter.category} ${formatDate(
-						frontMatter.publishedDate
-					)} ${frontMatter.readingTime}`}
+					<Link href={`/category/${frontMatter.category}`}>
+						{frontMatter.category}
+					</Link>
+					{` ${formatDate(frontMatter.publishedDate)} ${
+						frontMatter.readingTime
+					}`}
 				</p>
 				<MDXRemote {...mdxSource} components={MarkdownComponents()} />
 			</div>

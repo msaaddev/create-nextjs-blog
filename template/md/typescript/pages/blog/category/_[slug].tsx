@@ -4,14 +4,14 @@ import Link from 'next/link';
 import Head from 'next/head';
 
 // types
-import IPost from '../../types/post';
+import IPost from '../../../types/post';
 
 // utils
-import formatDate from '../../utils/formatDate';
+import formatDate from '../../../utils/formatDate';
 
 // data
-import blog from '../../data/blog.json';
-import category from '../../data/categories.json';
+import blog from '../../../data/blog.json';
+import category from '../../../data/categories.json';
 
 interface IProps {
 	blog: IPost[];
@@ -54,7 +54,7 @@ export default SingleCategory;
 export const getStaticPaths: GetStaticPaths = () => {
 	const paths: string[] = [];
 	category.forEach(catgy => {
-		paths.push(`/category/${catgy.name}`);
+		paths.push(`/blog/category/${catgy.name}`);
 	});
 
 	return {

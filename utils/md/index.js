@@ -117,7 +117,7 @@ module.exports = async answers => {
 		const gitIgnore = require(pkgJSONPath);
 
 		// append data to .gitignore
-		await fs.appendFile(gitIgnorePath, 'data', err => {
+		await fs.appendFile(gitIgnorePath, 'data/blog.json', err => {
 			if (err) throw err;
 		});
 

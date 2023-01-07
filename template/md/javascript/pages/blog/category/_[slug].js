@@ -2,11 +2,11 @@ import Link from 'next/link';
 import Head from 'next/head';
 
 // utils
-import formatDate from '../../utils/formatDate';
+import formatDate from '../../../utils/formatDate';
 
 // data
-import blog from '../../data/blog.json';
-import category from '../../data/categories.json';
+import blog from '../../../data/blog.json';
+import category from '../../../data/categories.json';
 
 const SingleCategory = ({ blog }) => {
 	return (
@@ -45,7 +45,7 @@ export default SingleCategory;
 export const getStaticPaths = () => {
 	const paths = [];
 	category.forEach(catgy => {
-		paths.push(`/category/${catgy.name}`);
+		paths.push(`/blog/category/${catgy.name}`);
 	});
 
 	return {

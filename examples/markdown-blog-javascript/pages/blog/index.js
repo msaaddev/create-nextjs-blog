@@ -24,7 +24,9 @@ const Blog = () => {
 								</Link>
 
 								<p>
-									<Link href={`/category/${post.category}`}>
+									<Link
+										href={`/blog/category/${post.category}`}
+									>
 										{post.category[0]
 											.charAt(0)
 											.toUpperCase() +

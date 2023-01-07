@@ -26,7 +26,7 @@ const BlogPost = ({ mdxSource, frontMatter }) => {
 			<div>
 				<h1>{frontMatter.title}</h1>
 				<p>
-					<Link href={`/category/${frontMatter.category}`}>
+					<Link href={`/blog/category/${frontMatter.category}`}>
 						{frontMatter.category}
 					</Link>
 					{` ${formatDate(frontMatter.publishedDate)} ${

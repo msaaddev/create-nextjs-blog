@@ -36,7 +36,7 @@ const BlogPost: NextPage<IProps> = ({ mdxSource, frontMatter }) => {
 			<div>
 				<h1>{frontMatter.title}</h1>
 				<p>
-					<Link href={`/category/${frontMatter.category}`}>{frontMatter.category}</Link>
+					<Link href={`/blog/category/${frontMatter.category}`}>{frontMatter.category}</Link>
 					{` ${formatDate(frontMatter.publishedDate)} ${
 						frontMatter.readingTime
 					}`}

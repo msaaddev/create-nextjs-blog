@@ -1,30 +1,21 @@
-import type { NextPage } from 'next';
-import { GetStaticProps, GetStaticPaths } from 'next';
 import Link from 'next/link';
 import Head from 'next/head';
 
-// types
-import IPost from '../../types/post';
-
 // utils
-import formatDate from '../../utils/formatDate';
+import formatDate from '../../../utils/formatDate';
 
 // data
-import blog from '../../data/blog.json';
-import category from '../../data/categories.json';
+import blog from '../../../data/blog.json';
+import category from '../../../data/categories.json';
 
-interface IProps {
-	blog: IPost[];
-}
-
-const SingleCategory: NextPage<IProps> = ({ blog }) => {
+const SingleCategory = ({ blog }) => {
 	return (
 		<>
 			<Head>
 				<title>{`${blog[0].category} category page`}</title>
 				<meta name="description" content="Blog" />
 			</Head>
-			{blog.map((post: IPost, index: number) => {
+			{blog.map((post, index) => {
 				return (
 					<div key={index}>
 						<article>
@@ -51,10 +42,10 @@ const SingleCategory: NextPage<IProps> = ({ blog }) => {
 
 export default SingleCategory;
 
-export const getStaticPaths: GetStaticPaths = () => {
-	const paths: string[] = [];
+export const getStaticPaths = () => {
+	const paths = [];
 	category.forEach(catgy => {
-		paths.push(`/category/${catgy.name}`);
+		paths.push(`/blog/category/${catgy.name}`);
 	});
 
 	return {
@@ -63,7 +54,7 @@ export const getStaticPaths: GetStaticPaths = () => {
 	};
 };
 
-export const getStaticProps: GetStaticProps = async ({ params }) => {
+export const getStaticProps = async ({ params }) => {
 	const blogData = blog.filter(post => post.category[0] === params?.slug);
 	return {
 		props: {

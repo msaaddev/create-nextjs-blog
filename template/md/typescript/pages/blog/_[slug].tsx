@@ -6,6 +6,7 @@ import fs from 'fs';
 import matter from 'gray-matter';
 import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote';
 import { serialize } from 'next-mdx-remote/serialize';
+import Link from 'next/link';
 
 // components
 import MarkdownComponents from '../../components/markdown';
@@ -35,9 +36,10 @@ const BlogPost: NextPage<IProps> = ({ mdxSource, frontMatter }) => {
 			<div>
 				<h1>{frontMatter.title}</h1>
 				<p>
-					{`${frontMatter.category} ${formatDate(
-						frontMatter.publishedDate
-					)} ${frontMatter.readingTime}`}
+					<Link href={`/category/${frontMatter.category}`}>{frontMatter.category}</Link>
+					{` ${formatDate(frontMatter.publishedDate)} ${
+						frontMatter.readingTime
+					}`}
 				</p>
 				<MDXRemote {...mdxSource} components={MarkdownComponents()} />
 			</div>

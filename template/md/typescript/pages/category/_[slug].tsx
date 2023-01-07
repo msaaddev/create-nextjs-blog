@@ -1,6 +1,7 @@
 import type { NextPage } from 'next';
 import { GetStaticProps, GetStaticPaths } from 'next';
 import Link from 'next/link';
+import Head from 'next/head';
 
 // types
 import IPost from '../../types/post';
@@ -19,6 +20,10 @@ interface IProps {
 const SingleCategory: NextPage<IProps> = ({ blog }) => {
 	return (
 		<>
+			<Head>
+				<title>{`${blog[0].category} category page`}</title>
+				<meta name="description" content="Blog" />
+			</Head>
 			{blog.map((post: IPost, index: number) => {
 				return (
 					<div key={index}>

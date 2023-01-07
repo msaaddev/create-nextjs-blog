@@ -26,11 +26,17 @@ const Blog: NextPage = () => {
 								<Link href={`/blog/${post.slug}`}>
 									<h2>{post.title}</h2>
 								</Link>
+
 								<p>
-									{`${post.category[0].charAt(0).toUpperCase() +
-										post.category[0].slice(1)} ${formatDate(
-											post.publishedDate
-										)} ${post.readingTime}`}
+									<Link href={`/category/${post.category}`}>
+										{post.category[0]
+											.charAt(0)
+											.toUpperCase() +
+											post.category[0].slice(1)}
+									</Link>
+									{` ${formatDate(post.publishedDate)} ${
+										post.readingTime
+									}`}
 								</p>
 								<p>{post.description}</p>
 							</article>

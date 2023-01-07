@@ -24,6 +24,24 @@ module.exports = (projectName = '') => {
 		if (err) throw err;
 	});
 
+	// copy category page
+	source = path.join(
+		__dirname,
+		'..',
+		'..',
+		'..',
+		'template',
+		'md',
+		'typescript',
+		'pages',
+		'category'
+	);
+
+	destination = path.join(cwd, projectName, 'pages', 'category');
+	copy(source, destination, (err, createdFiles) => {
+		if (err) throw err;
+	});
+
 	// copy components
 	source = path.join(
 		__dirname,

@@ -59,6 +59,17 @@ module.exports = async answers => {
 
 		succeed(spinner, 'Demo posts created successfully');
 
+		/* copy demo categories to Next.js app */
+		start(spinner, 'Creating demo categories...');
+		source = path.join(__dirname, '..', '..', 'template', 'md', 'data');
+		destination = path.join(cwd, projectName, 'data');
+
+		copy(source, destination, (err, createdFiles) => {
+			if (err) throw err;
+		});
+
+		succeed(spinner, 'Demo categories created successfully');
+
 		/* create blog page */
 		start(spinner, 'Creating blog page...');
 
